@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=M+PLUS+1p"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Hachi+Maru+Pop"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Yusei+Magic"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Reggae+One"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+JP"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/earlyaccess/nicomoji.css"
+      rel="stylesheet"
+    />
+
+    <link href="./font.css" rel="stylesheet" />
+
+    <link rel="icon" href="./img/favicon2/favicon.ico" />
+    <script src="js/bouyomichan_client.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5RNP0LDER8"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-5RNP0LDER8");
+    </script>
+    <!-- END: Google tag (gtag.js) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subtitulos y traduccion: CONFIGURACIÓN</title>
+    <style type="text/css">
+      button,
+      input,
+      select,
+      textarea {
+        /* font-family : inherit; */
+        /* font-family: 'メイリオ', Meiryo,sans-serif; */
+        /* font-size   : 300%; */
+        /* color  : black; */
+        font-weight: 0;
+        /*text-align  : center;       /* left, center, right */
+        vertical-align: top;
+        /* top, middle, bottom */
+        -webkit-text-stroke-color: rgb(21, 0, 141);
+        -webkit-text-stroke-width: 0px;
+      }
+
+      html {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        /* font-family:'07NikumaruFont'; */
+      }
+
+      table {
+        width: 100%;
+        /* table-layout: fixed; */
+      }
+
+      table.btm_table {
+        position: absolute;
+        /* bottom:0; */
+      }
+
+      table td {
+        /*word-break: break-all;*/
+        overflow-wrap: break-word;
+      }
+    </style>
+
+    <style>
+      /* prepare the selectors to add a stroke to */
+
+      .stroke-single-imb {
+        /* position: absolute; */
+        left: 0;
+        right: 0;
+        margin: 0;
+        /* -webkit-text-stroke: 0px #0000FF;  */
+      }
+
+      .stroke-single-bg {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        /* -webkit-text-stroke: 3px #FF0000;  */
+      }
+
+      /* add a single stroke */
+      .stroke-single-fg {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        /* -webkit-text-stroke: 0px #FFFFFF; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Operation Example Display Screen -->
+    <iframe
+      src=""
+      name="sample"
+      width="100%"
+      height="30%"
+      id="asr_frame"
+    ></iframe>
+
+    <!-- API key text box -->
+    Google Script API-KEY:
+    <input
+      type="text"
+      name="gas_key"
+      id="gas_key"
+      size="60"
+      oninput="updateOptionValues();"
+    /><br />
+    ↑If you enter the KEY here, the translation result will also appear. Click
+    here for instructions on how to create a key:<a
+      target="_blank"
+      href="http://www.sayonari.com/trans_asr/index_asr.html"
+      >http://www.sayonari.com/trans_asr/index_asr.html</a
+    ><br />
+    <br />
+    <!--  Background color -->
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text
+    Border&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;Recognition:
+    <input
+      id="color1"
+      type="color"
+      value="#ffffff"
+      oninput="changeTextColor('fg',this.value,1); updateOptionValues(only_url=true)"
+    />
+    <input
+      id="st_color1"
+      type="color"
+      value="#000000"
+      oninput="changeTextColor('bg',this.value,1); updateOptionValues(only_url=true)"
+    />
+    &nbsp;Background:
+    <input
+      id="bgcolor"
+      type="color"
+      value="#00ff00"
+      oninput="document.getElementById('asr_frame').contentWindow.document.bgColor=this.value; changeTextColor('imb',this.value,1); updateOptionValues(only_url=true)"
+    />
+    <br />
+    Translation 1:&nbsp;<input
+      id="color2"
+      type="color"
+      value="#ffffff"
+      oninput="changeTextColor('fg',this.value,2); updateOptionValues(only_url=true)"
+    />
+    <input
+      id="st_color2"
+      type="color"
+      value="#000000"
+      oninput="changeTextColor('bg',this.value,2); updateOptionValues(only_url=true)"
+    /><br />
+    Translation 2:&nbsp;<input
+      id="color3"
+      type="color"
+      value="#ffffff"
+      oninput="changeTextColor('fg',this.value,3); updateOptionValues(only_url=true)"
+    />
+    <input
+      id="st_color3"
+      type="color"
+      value="#000000"
+      oninput="changeTextColor('bg',this.value,3); updateOptionValues(only_url=true)"
+    /><br />
+    <br />
+    <!-- Text font 
+    Font Name: <input
+      type="text"
+      name="font"
+      id="font"
+      size="60"
+      oninput="document.getElementById('asr_frame').contentWindow.document.getElementById('result_text').style.fontFamily = getParam('font'); updateOptionValues()"
+    /><br /> -->
+
+    <!-- Text size -->
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Border
+    <br />
+    Recognition :
+    <input
+      id="size1"
+      type="range"
+      value="25"
+      min="0"
+      max="40"
+      step="0.1"
+      oninput="document.getElementById('asr_frame').contentWindow.document.getElementById('speech_text').style.fontSize = this.value + 'pt'; document.getElementById('text_size_view1').innerHTML=this.value; updateOptionValues(only_url=true)"
+    />
+    <span id="text_size_view1">25</span>px
+
+    <input
+      id="weight1"
+      type="range"
+      value="900"
+      min="100"
+      max="900"
+      step="100"
+      oninput="document.getElementById('asr_frame').contentWindow.document.getElementById('speech_text').style.fontWeight = this.value; document.getElementById('text_weight_view1').innerHTML=this.value; updateOptionValues(only_url=true)"
+    />
+    <span id="text_weight_view1">900</span>
+
+    <input
+      id="st_width1"
+      type="range"
+      value="6"
+      min="0"
+      max="20"
+      step="0.1"
+      oninput="setTextBorder(this.value,1); document.getElementById('text_st_size_view1').innerHTML=this.value; updateOptionValues(only_url=true)"
+    />
+    <span id="text_st_size_view1">6</span>pt
+    <br />
+
+    Translation 1:
+    <input
+      id="size2"
+      type="range"
+      value="25"
+      min="0"
+      max="40"
+      step="0.1"
+      oninput="document.getElementById('asr_frame').contentWindow.document.getElementById('trans_text').style.fontSize = this.value + 'pt'; document.getElementById('text_size_view2').innerHTML=this.value; updateOptionValues(only_url=true)"
+    />
+    <span id="text_size_view2">25</span>px
+
+    <input
+      id="weight2"
+      type="range"
+      value="900"
+      min="100"
+      max="900"
+      step="100"
+      oninput="document.getElementById('asr_frame').contentWindow.document.getElementById('trans_text').style.fontWeight = this.value; document.getElementById('text_weight_view2').innerHTML=this.value; updateOptionValues(only_url=true)"
+    />
+    <span id="text_weight_view2">900</span>
+
+    <input
+      id="st_width2"
+      type="range"
+      value="6"
+      min="0"
+      max="20"
+      step="0.1"
+      oninput="setTextBorder(this.value,2); document.getElementById('text_st_size_view2').innerHTML=this.value; updateOptionValues(only_url=true)"
+    />
+    <span id="text_st_size_view2">6</span>pt
+    <br />
+
+    Translation 2:<input
+      id="size3"
+      type="range"
+      value="25"
+      min="0"
+      max="40"
+      step="0.1"
+      oninput="document.getElementById('asr_frame').contentWindow.document.getElementById('trans_text2').style.fontSize = this.value + 'pt'; document.getElementById('text_size_view3').innerHTML=this.value; updateOptionValues(only_url=true)"
+    />
+    <span id="text_size_view3">25</span>px
+
+    <input
+      id="weight3"
+      type="range"
+      value="900"
+      min="100"
+      max="900"
+      step="100"
+      oninput="document.getElementById('asr_frame').contentWindow.document.getElementById('trans_text2').style.fontWeight = this.value; document.getElementById('text_weight_view3').innerHTML=this.value; updateOptionValues(only_url=true)"
+    />
+    <span id="text_weight_view3">900</span>
+
+    <input
+      id="st_width3"
+      type="range"
+      value="6"
+      min="0"
+      max="20"
+      step="0.1"
+      oninput="setTextBorder(this.value,3); document.getElementById('text_st_size_view3').innerHTML=this.value; updateOptionValues(only_url=true)"
+    />
+    <span id="text_st_size_view3">6</span>pt
+    <br />
+    <br />
+    <!-- Text Alignment -->
+    Text position: Left and right:&nbsp;
+    <select id="textAlign" onchange="updateOptionValues()">
+      <option value="left">Left-aligned</option>
+      <option value="center" selected>Centered</option>
+      <option value="right">Right-aligned</option>
+    </select>
+
+    &nbsp;Top and Bottom:&nbsp;
+    <select id="v_align" onchange="updateOptionValues()">
+      <option value="top" selected>Up</option>
+      <option value="bottom">Under</option></select
+    ><br />
+
+    <!-- Line breaks in text -->
+    Text line breaks:&nbsp;
+    <select id="whiteSpace" onchange="updateOptionValues()">
+      <option value="nowrap">No line breaks</option>
+      <option value="" selected>Line break at screen edge</option></select
+    ><br />
+    <br />
+
+    <!-- Text entry -->
+    Voice recognition language:&nbsp;
+    <select id="recog" onchange="updateOptionValues(only_url=false);">
+      <option value="ja">Japanese</option>
+      <option value="en">English</option>
+      <option value="ko">Korean</option>
+      <option value="zh-CN">Chinese</option>
+      <option value="zh-TW">Formosan</option>
+      <option value="fr">French</option>
+      <option value="it">Italian</option>
+      <option value="de">German</option>
+      <option value="tr">Turkish</option>
+      <option value="pl">Polish</option>
+      <option value="uk">Ukranian</option>
+      <option value="ru">Russian</option>
+      <option value="es" selected>Spanish</option>
+      <option value="pt">Portuguese</option>
+      <option value="nl">Dutch</option>
+      <option value="id">Indonesian</option>
+      <option value="vi">Vietnamese</option>
+      <option value="th">Thai</option>
+      <option value="ar">Arabic</option>
+      <option value="so">Somali</option></select
+    >&nbsp;&nbsp;Font:&nbsp;
+    <select
+      name="speech_text_font_selector"
+      id="speech_text_font_selector"
+      onchange="document.getElementById('asr_frame').contentWindow.document.getElementById('speech_text').style.fontFamily = this.value; selectFont();"
+    >
+      <option value="direct">[Direct Specification]</option>
+      <option value="M PLUS\ 1p">M PLUS 1p</option>
+      <option value="M PLUS Rounded\ 1c" selected>M PLUS Rounded 1c</option>
+      <option value="Mamelon">Mamelon</option>
+      <option value="YasashisaB">Kindness B</option>
+      <option value="HuiFont29">Fuji</option>
+      <option value="Hachi Maru Pop">Hachi Maru Pop</option>
+      <option value="MkPOP">851 Maca Pop</option>
+      <option value="bananaslipplus">Banana slip plus</option>
+      <option value="katyou">Flowers, birds, wind and moon</option>
+      <option value="TanukiMagic">Tanuki permanent magic</option>
+      <option value="hakidame">Vomit</option>
+      <option value="umeboshi">Salted plum</option>
+      <option value="Jiyucho">Jiyuuchou</option>
+      <option value="HitmoR">Hitmo</option>
+      <option value="nishikiteki">Nishiki target</option>
+      <option value="Yusei Magic">Yusei Magic</option>
+      <option value="Nikumaru">Nikumaru</option>
+      <option value="KTEGAKI">Kawaii handwriting</option>
+      <option value="JKGL">JK Gothic L</option>
+      <option value="Reggae One">Reggae One</option>
+      <option value="OhisamaFont">Sun</option>
+      <option value="nukamiso">Bran miso</option>
+      <option value="genkai">Genkai Mincho</option>
+      <option value="CP">Checkpoint</option>
+      <option value="Noto Sans JP">Noto Sans JP</option>
+      <option value="Sawarabi Gothic">Sawarabi Gothic</option>
+      <option value="Nico Moji">Nicomoji</option></select
+    >&nbsp;Font (Directly specified):&nbsp;<input
+      type="text"
+      name="speech_text_font"
+      id="speech_text_font"
+      size="30"
+      oninput="document.getElementById('asr_frame').contentWindow.document.getElementById('speech_text').style.fontFamily = this.value; updateOptionValues();"
+      disabled
+    /><br />
+
+    Translation language(1):&nbsp;
+    <select id="trans" onchange="updateOptionValues(only_url=false);">
+      <option value="none">None</option>
+      <option value="ja">Japanese</option>
+      <option value="en" selected>English</option>
+      <option value="ko">Korean</option>
+      <option value="zh-CN">Chinese</option>
+      <option value="zh-TW">Formosan</option>
+      <option value="fr">French</option>
+      <option value="it">Italian</option>
+      <option value="de">German</option>
+      <option value="tr">Turkish</option>
+      <option value="pl">Polish</option>
+      <option value="uk">Ukranian</option>
+      <option value="ru">Russian</option>
+      <option value="es">Spanish</option>
+      <option value="pt">Portuguese</option>
+      <option value="nl">Dutch</option>
+      <option value="id">Indonesian</option>
+      <option value="vi">Vietnamese</option>
+      <option value="th">Thai</option>
+      <option value="ar">Arabic</option>
+      <option value="so">Somali</option></select
+    >&nbsp;&nbsp;Font:&nbsp;
+    <select
+      name="trans_text_font_selector"
+      id="trans_text_font_selector"
+      onchange="document.getElementById('asr_frame').contentWindow.document.getElementById('trans_text').style.fontFamily = this.value; selectFont();"
+    >
+      <option value="direct">[Direct Specification]</option>
+      <option value="M PLUS\ 1p">M PLUS 1p</option>
+      <option value="M PLUS Rounded\ 1c" selected>M PLUS Rounded 1c</option>
+      <option value="Mamelon">Mamelon</option>
+      <option value="YasashisaB">Kindness B</option>
+      <option value="HuiFont29">Fuji</option>
+      <option value="Hachi Maru Pop">Hachi Maru Pop</option>
+      <option value="MkPOP">851 Maca Pop</option>
+      <option value="bananaslipplus">Banana slip plus</option>
+      <option value="katyou">Flowers, birds, wind and moon</option>
+      <option value="TanukiMagic">Tanuki permanent magic</option>
+      <option value="hakidame">Vomit</option>
+      <option value="umeboshi">Salted plum</option>
+      <option value="Jiyucho">Jiyuuchou</option>
+      <option value="HitmoR">Hitmo</option>
+      <option value="nishikiteki">Nishiki target</option>
+      <option value="Yusei Magic">Yusei Magic</option>
+      <option value="Nikumaru">Nikumaru</option>
+      <option value="KTEGAKI">Kawaii handwriting</option>
+      <option value="JKGL">JK Gothic L</option>
+      <option value="Reggae One">Reggae One</option>
+      <option value="OhisamaFont">Sun</option>
+      <option value="nukamiso">Bran miso</option>
+      <option value="genkai">Genkai Mincho</option>
+      <option value="CP">Checkpoint</option>
+      <option value="Noto Sans JP">Noto Sans JP</option>
+      <option value="Sawarabi Gothic">Sawarabi Gothic</option>
+      <option value="Nico Moji">Nicomoji</option></select
+    >&nbsp;&nbsp;Font (Directly specified):&nbsp;<input
+      type="text"
+      name="trans_text_font"
+      id="trans_text_font"
+      size="30"
+      oninput="document.getElementById('asr_frame').contentWindow.document.getElementById('trans_text').style.fontFamily = this.value; updateOptionValues();"
+      disabled
+    /><br />
+
+    Translation language(2):&nbsp;
+    <select id="trans2" onchange="updateOptionValues(only_url=false);">
+      <option value="none" selected>None</option>
+      <option value="ja">Japanese</option>
+      <option value="en">English</option>
+      <option value="ko">Korean</option>
+      <option value="zh-CN">Chinese</option>
+      <option value="zh-TW">Formosan</option>
+      <option value="fr">French</option>
+      <option value="it">Italian</option>
+      <option value="de">German</option>
+      <option value="tr">Turkish</option>
+      <option value="pl">Polish</option>
+      <option value="uk">Ukranian</option>
+      <option value="ru">Russian</option>
+      <option value="es">Spanish</option>
+      <option value="pt">Portuguese</option>
+      <option value="nl">Dutch</option>
+      <option value="id">Indonesian</option>
+      <option value="vi">Vietnamese</option>
+      <option value="th">Thai</option>
+      <option value="ar">Arabic</option>
+      <option value="so">Somali</option></select
+    >&nbsp;&nbsp;Font:&nbsp;
+    <select
+      name="trans_text2_font_selector"
+      id="trans_text2_font_selector"
+      onchange="document.getElementById('asr_frame').contentWindow.document.getElementById('trans_text2').style.fontFamily = this.value; selectFont();"
+    >
+      <option value="direct">[Direct Specification]</option>
+      <option value="M PLUS\ 1p">M PLUS 1p</option>
+      <option value="M PLUS Rounded\ 1c" selected>M PLUS Rounded 1c</option>
+      <option value="Mamelon">Mamelon</option>
+      <option value="YasashisaB">Kindness B</option>
+      <option value="HuiFont29">Fuji</option>
+      <option value="Hachi Maru Pop">Hachi Maru Pop</option>
+      <option value="MkPOP">851 Maca Pop</option>
+      <option value="bananaslipplus">Banana slip plus</option>
+      <option value="katyou">Flowers, birds, wind and moon</option>
+      <option value="TanukiMagic">Tanuki permanent magic</option>
+      <option value="hakidame">Vomit</option>
+      <option value="umeboshi">Salted plum</option>
+      <option value="Jiyucho">Jiyuuchou</option>
+      <option value="HitmoR">Hitmo</option>
+      <option value="nishikiteki">Nishiki target</option>
+      <option value="Yusei Magic">Yusei Magic</option>
+      <option value="Nikumaru">Nikumaru</option>
+      <option value="KTEGAKI">Kawaii handwriting</option>
+      <option value="JKGL">JK Gothic L</option>
+      <option value="Reggae One">Reggae One</option>
+      <option value="OhisamaFont">Sun</option>
+      <option value="nukamiso">Bran miso</option>
+      <option value="genkai">Genkai Mincho</option>
+      <option value="CP">Checkpoint</option>
+      <option value="Noto Sans JP">Noto Sans JP</option>
+      <option value="Sawarabi Gothic">Sawarabi Gothic</option>
+      <option value="Nico Moji">Nicomoji</option></select
+    >&nbsp;Font (Directly specified):<input
+      type="text"
+      name="trans_text2_font"
+      id="trans_text2_font"
+      size="30"
+      oninput="document.getElementById('asr_frame').contentWindow.document.getElementById('trans_text2').style.fontFamily = this.value; updateOptionValues();"
+      disabled
+    /><br />
+    <br />
+
+    <!-- Turn off text display after X seconds-->
+    After how many milliseconds do you erase the sentence?:&nbsp;&nbsp;
+    <input
+      type="text"
+      name="timer"
+      id="timer"
+      size="10"
+      oninput="updateOptionValues();"
+    />Milliseconds (insert half-width number; 1000 milliseconds = 1 second).<br />
+
+    <!-- End of sentence -->
+    How many milliseconds of silence does it take to break a
+    sentence?:&nbsp;&nbsp;
+    <input
+      type="text"
+      name="short_pause"
+      value="750"
+      id="short_pause"
+      size="10"
+      oninput="updateOptionValues();"
+    />Milliseconds (insert half-width number; 1000 milliseconds = 1 second).<br />
+    (500: Turns off immediately | 750: Normal | 1000: Connects. (If nothing is
+    put in, the behavior will be the same as before<br />
+    <br />
+
+    <!-- Sticky Chan Collaboration -->
+    Use the stick-chan linkage:&nbsp;<input
+      type="checkbox"
+      id="bouyomi"
+      onchange="updateOptionValues()"
+    />
+    ← Check the box if you want to use it. Details →
+    <a
+      target="_blank"
+      href="https://twitter.com/sayonari/status/1386937837682003968"
+      >twitter</a
+    ><br />
+    <br />
+    <!-- Sensitive word support! -->
+    <font color="red">Stop</font> handling sensitive words (replaced by
+    ****):<input
+      type="checkbox"
+      id="anti_sexual"
+      onchange="updateOptionValues()"
+    />
+    <br />
+    ↑If the operation is slow, checking the box and turning off the function may
+    solve the problem. <br /><br />
+    <!-- # URL view & copy button ############### -->
+    URL : <textarea name="url" id="url" rows="7" cols="90"></textarea><br />
+    <br />
+    &nbsp;&nbsp;&nbsp;<input
+      type="button"
+      value="copy to clipboard"
+      id="textarea_copy"
+      onclick="document.getElementsByTagName('textarea')[0].select();document.execCommand('copy');"
+    />
+    &nbsp;<a id="open_link" target="_blank" href="">[Open in a new window]</a
+    ><br />
+    <br />
+    <!-- # .bat download buttons ############################## -->
+    <button onclick="generateBatFile('win')">
+      For Windows Startup .bat file generation</button
+    >&nbsp;
+    <button onclick="generateBatFile('mac')">
+      For Mac Startup .command file generation</button
+    ><br /><br /><br /><br />
+  </body>
+  <!-- Loading of subtitle setting items and their reflection on the screen -->
+  <script>
+    const currentURL = window.location.href;
+    let base_url = currentURL.replace("index.html", "");
+    base_url += "main.html?";
+
+    // config value list
+    config_values = [
+      "gas_key",
+      "textAlign",
+      "v_align",
+      "whiteSpace",
+      "recog",
+      "trans",
+      "trans2",
+      "bgcolor",
+      "size1",
+      "weight1",
+      "color1",
+      "st_color1",
+      "st_width1",
+      "size2",
+      "weight2",
+      "color2",
+      "st_color2",
+      "st_width2",
+      "size3",
+      "weight3",
+      "color3",
+      "st_color3",
+      "st_width3",
+      "timer",
+      "short_pause",
+      "bouyomi",
+      "anti_sexual",
+      "speech_text_font_selector",
+      "trans_text_font_selector",
+      "trans_text2_font_selector",
+      "speech_text_font",
+      "trans_text_font",
+      "trans_text2_font",
+    ];
+
+    // Initialize translation screen and URL
+    document.getElementById("asr_frame").src = base_url;
+    document.getElementById("url").innerHTML = base_url;
+
+    // Restore settings
+    const config = JSON.parse(localStorage.jimakuChan_config || "{}");
+    for (const p of config_values) {
+      if (config[p] != null) document.getElementById(p).value = config[p];
+    }
+    for (var i = 0; i < 3; i++) {
+      if (config["size" + String(i + 1)] != null)
+        document.getElementById("text_size_view" + String(i + 1)).innerHTML =
+          config["size" + String(i + 1)];
+      if (config["weight" + String(i + 1)] != null)
+        document.getElementById("text_weight_view" + String(i + 1)).innerHTML =
+          config["weight" + String(i + 1)];
+      if (config["st_width" + String(i + 1)] != null)
+        document.getElementById("text_st_size_view" + String(i + 1)).innerHTML =
+          config["st_width" + String(i + 1)];
+    }
+    document.getElementById("bouyomi").checked = config["bouyomi"];
+    document.getElementById("anti_sexual").checked = config["anti_sexual"];
+
+    // Enable text field for direct font input
+    function selectFont() {
+      var speech_text_font_selector = document.getElementById(
+        "speech_text_font_selector"
+      ).value;
+      var trans_text_font_selector = document.getElementById(
+        "trans_text_font_selector"
+      ).value;
+      var trans_text2_font_selector = document.getElementById(
+        "trans_text2_font_selector"
+      ).value;
+      console.log("フォントテキストエリア: " + speech_text_font_selector);
+      if (speech_text_font_selector === "direct") {
+        speech_text_font.disabled = false;
+      } else {
+        speech_text_font.disabled = true;
+      }
+
+      if (trans_text_font_selector === "direct") {
+        trans_text_font.disabled = false;
+      } else {
+        trans_text_font.disabled = true;
+      }
+
+      if (trans_text2_font_selector === "direct") {
+        trans_text2_font.disabled = false;
+      } else {
+        trans_text2_font.disabled = true;
+      }
+
+      updateOptionValues();
+    }
+
+    // Update the value of the option to attach to the URL
+    function updateOptionValues(only_url = false) {
+      for (const p of config_values) {
+        eval("var " + p + " = document.getElementById('" + p + "').value;");
+      }
+      eval("var bouyomi = document.getElementById('bouyomi').checked;");
+      eval("var anti_sexual = document.getElementById('anti_sexual').checked;");
+
+      var new_url =
+        base_url +
+        "textAlign=" +
+        textAlign +
+        "&v_align=" +
+        v_align +
+        "&recog=" +
+        recog +
+        "&bgcolor=" +
+        bgcolor +
+        "&size1=" +
+        size1 +
+        "&weight1=" +
+        weight1 +
+        "&color1=" +
+        color1 +
+        "&st_color1=" +
+        st_color1 +
+        "&st_width1=" +
+        st_width1 +
+        "&size2=" +
+        size2 +
+        "&weight2=" +
+        weight2 +
+        "&color2=" +
+        color2 +
+        "&st_color2=" +
+        st_color2 +
+        "&st_width2=" +
+        st_width2 +
+        "&size3=" +
+        size3 +
+        "&weight3=" +
+        weight3 +
+        "&color3=" +
+        color3 +
+        "&st_color3=" +
+        st_color3 +
+        "&st_width3=" +
+        st_width3;
+
+      if (whiteSpace != "") {
+        new_url = new_url + "&whiteSpace=" + whiteSpace;
+      }
+      if (trans != "none") {
+        new_url = new_url + "&trans=" + trans;
+      }
+      if (trans2 != "none") {
+        new_url = new_url + "&trans2=" + trans2;
+      }
+
+      // font processing
+      if (speech_text_font_selector !== "direct") {
+        speech_text_font = speech_text_font_selector;
+      }
+      if (trans_text_font_selector !== "direct") {
+        trans_text_font = trans_text_font_selector;
+      }
+      if (trans_text2_font_selector !== "direct") {
+        trans_text2_font = trans_text2_font_selector;
+      }
+      if (speech_text_font != "") {
+        new_url = new_url + "&speech_text_font=" + speech_text_font;
+      }
+      if (trans_text_font != "") {
+        new_url = new_url + "&trans_text_font=" + trans_text_font;
+      }
+      if (trans_text2_font != "") {
+        new_url = new_url + "&trans_text2_font=" + trans_text2_font;
+      }
+
+      if (timer != "") {
+        new_url = new_url + "&timer=" + timer;
+      }
+      if (short_pause != "") {
+        new_url = new_url + "&short_pause=" + short_pause;
+      }
+
+      if (bouyomi == true) {
+        new_url = new_url + "&bouyomi=" + bouyomi;
+      }
+      if (anti_sexual == true) {
+        new_url = new_url + "&anti_sexual=" + "false";
+      }
+      if (gas_key != "") {
+        new_url = new_url + "&gas_key=" + gas_key;
+      }
+
+      // Update config
+      for (const p of config_values) {
+        config[p] = eval(p);
+      }
+
+      // Save Settings
+      localStorage.jimakuChan_config = JSON.stringify(config);
+
+      // Update Recognition Chan screen///////
+      if (only_url == false) {
+        document.getElementById("asr_frame").src = new_url;
+      }
+
+      document.getElementById("url").innerHTML = new_url;
+      document.getElementById("open_link").href = new_url;
+
+      return 0;
+    }
+
+    updateOptionValues();
+
+    // Text color change ---------------------------
+    function changeTextColor(type, color, id) {
+      var text_layer = ["fg", "bg", "imb"];
+      var lang_line = ["speech_text", "trans_text", "trans_text2"];
+
+      if (type == "fg") {
+        document
+          .getElementById("asr_frame")
+          .contentWindow.document.getElementById(
+            lang_line[id - 1] + "-" + type
+          ).style.color = color;
+      } else {
+        document
+          .getElementById("asr_frame")
+          .contentWindow.document.getElementById(
+            lang_line[id - 1] + "-" + type
+          ).style.webkitTextStrokeColor = color;
+      }
+    }
+
+    function setTextBorder(width, id) {
+      var lang_line = ["speech_text", "trans_text", "trans_text2"];
+
+      document
+        .getElementById("asr_frame")
+        .contentWindow.document.getElementById(
+          lang_line[id - 1] + "-bg"
+        ).style.webkitTextStrokeWidth = width + "pt";
+      document
+        .getElementById("asr_frame")
+        .contentWindow.document.getElementById(
+          lang_line[id - 1] + "-imb"
+        ).style.webkitTextStrokeWidth = width + "pt";
+    }
+
+    function changeText(text, id) {
+      var text_layer = ["fg", "bg", "imb"];
+      var lang_line = ["speech_text", "trans_text", "trans_text2"];
+
+      for (const tl of text_layer) {
+        document
+          .getElementById("asr_frame")
+          .contentWindow.document.getElementById(
+            ll[id - 1] + "-" + tl
+          ).innerHTML = text;
+      }
+    }
+  </script>
+
+  <!--   Script for file generation -->
+  <script>
+    function generateFile(content, fileName) {
+      const blob = new Blob([content], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.download = fileName;
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function generateBatFile(os) {
+      let url = document.getElementById("url").value.trim();
+      // Perform URL decoding
+      url = decodeURIComponent(url);
+
+      if (url === "") {
+        alert("URL is not available. Error.");
+        return;
+      }
+
+      let content, filename;
+
+      if (os === "win") {
+        content = `@echo off\r\nstart chrome.exe --disable-features=CalculateNativeWinOcclusion --user-data-dir="C:\\temp\\user_jimaku" --new-window "${url}"\r\nexit /b`;
+        filename = "jimakuChan_nonStop.bat";
+      } else {
+        content = `#!/bin/sh\n"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --disable-features=CalculateNativeWinOcclusion --user-data-dir="/tmp/user_jimaku"  --new-window "${url}"`;
+        filename = "jimakuChan_nonStop.command";
+      }
+
+      generateFile(content, filename);
+    }
+  </script>
+</html>
+
+<!--  -->
