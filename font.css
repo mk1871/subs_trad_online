@@ -77,3 +77,7 @@
   font-family: "CP";
   src: url("./font/CP.otf") format("opentype");
 }
+@font-face {
+  font-family: "Bangers2";
+  src: url("./font/Bangers-Regular.ttf") format("truetype");
+}
